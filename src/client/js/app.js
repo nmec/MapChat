@@ -10,22 +10,22 @@ App.ApplicationRoute = Ember.Route.extend({
 });
 App.ApplicationController = Ember.Controller.extend({
 	init: function(){
-		var _this = this;
+		var self = this;
 		
 		getGeoLocation();
 		initMap();
 		
 		function initMap(){
 			$(function(){
-				_this.map = new GMaps({
+				self.map = new GMaps({
 					div: '#map-canvas',
-					lat: _this.get('lat'),
-					lng: _this.get('lng'),
+					lat: self.get('lat'),
+					lng: self.get('lng'),
 					zoom: 4,
 					mapTypeControl: false
 				});
-				_this.addObserver('lat', _this, 'geoPositionChangeHandler');
-				_this.addObserver('lng', _this, 'geoPositionChangeHandler');
+				self.addObserver('lat', self, 'geoPositionChangeHandler');
+				self.addObserver('lng', self, 'geoPositionChangeHandler');
 			});
 		}
 		
@@ -33,8 +33,8 @@ App.ApplicationController = Ember.Controller.extend({
 			GMaps.geolocate({
 				success: function(position) {
 					var coords = position.coords;
-					_this.set('lat', coords.latitude);
-					_this.set('lng', coords.longitude);
+					self.set('lat', coords.latitude);
+					self.set('lng', coords.longitude);
 				},
 				error: function(error) {
 					alert('Geolocation failed: '+error.message);
