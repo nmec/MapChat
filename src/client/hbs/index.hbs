@@ -1,0 +1,16 @@
+<div class="chat">
+	<div class="chat__room">
+		<section class="chat__room__log">
+
+		</section>
+		<form {{action send on='submit'}} class="chat__room__input form">
+			<input type="text">
+			<button>Send</button>
+		</form>
+	</div>
+	<aside class="chat__sidebar">
+		<h3 class="subheader">
+			{{App.usersConnected}} connected
+		</h3>
+	</aside>
+</div>
