@@ -29,8 +29,10 @@ App.LoginController = Ember.Controller.extend({
 
 $(function(){
 	new GMaps({
-		  div: '#map-canvas',
-		  lat: -12.043333,
-		  lng: -77.028333
-		});
+		div: '#map-canvas',
+		lat: 48.166085,
+		lng: 14.501953,
+		zoom: 4,
+		mapTypeControl: false
+	});
 });

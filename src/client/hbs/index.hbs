@@ -1,12 +1,10 @@
 <div id="map-canvas"></div>
-<div class="overlay">
-	{{render friends}}
-	<div id="message-box">
-		<form {{action submitHandler on="submit"}}>
-			{{input value=message class="string"}}
-			<button>Send</button>
-		</form>
-	</div>
+{{render friends}}
+<div id="message-box">
+	<form {{action submitHandler on="submit"}}>
+		{{input value=message class="string"}}
+		<button>Send</button>
+	</form>
 </div>
 {{#unless loggedIn}}
 	{{render login}}
