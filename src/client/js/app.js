@@ -1,6 +1,10 @@
 App = Ember.Application.create();
-App.ApplicationController = Ember.Controller.extend();
+App.ApplicationController = Ember.Controller.extend({});
 App.IndexController = Ember.Controller.extend({
+	loggedIn: false,
+	loginHandler: function(name){
+		this.toggleProperty('loggedIn');
+	},
 	submitHandler: function(){
 		this.message;
 	}
@@ -15,6 +19,12 @@ App.FriendsController = Ember.ArrayController.extend({
 	    {name: 'my name'}, 
 		{name: 'my other name'}
 	]
+});
+App.LoginController = Ember.Controller.extend({
+	needs: 'index',
+	loginHandler: function(){
+		this.get('controllers.index').loginHandler(this.name);
+	}
 });
 
 $(function(){
