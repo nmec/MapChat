@@ -17,6 +17,20 @@ countEmit = (dir) ->
 
 	io.sockets.emit 'clients', numClients
 
+loggedInUsers = []
+
+users = io.of '/users'
+
+users.on 'connection', (socket) ->
+
+	socket.on 'login', (data) ->
+		loggedInUsers.push {
+			name: data
+		}
+		console.log loggedInUsers
+		users.emit 'allUsers', loggedInUsers
+
+
 # chat = io.of '/chat'
 # chatLog = [
 # 	{

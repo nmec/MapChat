@@ -1,4 +1,13 @@
+var users = io.connect(':8080/users');
 App = Ember.Application.create({});
+App.ApplicationRoute = Ember.Route.extend({
+	activate: function() {
+		var self = this;
+		users.on('allUsers', function(data) {
+			self.controllerFor('friends').set('content', data);
+		});
+	}
+});
 App.ApplicationController = Ember.Controller.extend({
 	init: function(){
 		var _this = this;
@@ -49,24 +58,22 @@ App.IndexController = Ember.Controller.extend({
 	loginHandler: function(name){
 		if(name) {
 			this.toggleProperty('loggedIn');
+			users.emit('login', name);
 		} else {
 			alert('ENTER A NAME!');
 		}	
 	},
 	submitHandler: function(){
-		this.message;
+		msg = this.message;
 	}
 });
 App.IndexRoute = Ember.Route.extend({
-	redirect: function(){ 
-		this.transitionTo('application'); 
+	redirect: function(){
+		this.transitionTo('application');
 	}
 });
 App.FriendsController = Ember.ArrayController.extend({
-	content: [
-	    {name: 'my name'}, 
-		{name: 'my other name'}
-	]
+	content: []
 });
 App.LoginController = Ember.Controller.extend({
 	needs: 'index',
