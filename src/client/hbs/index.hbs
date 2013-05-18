@@ -3,7 +3,7 @@
 <div id="message-box">
 	<form {{action submitHandler on="submit"}}>
 		{{input value=message class="string"}}
-		<button>Send</button>
+		<button>Send as {{name}}</button>
 	</form>
 </div>
 {{#unless loggedIn}}
