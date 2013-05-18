@@ -28,13 +28,17 @@ App.ApplicationController = Ember.Controller.extend({
 				self.addObserver('lng', self, 'geoPositionChangeHandler');
 			});
 		}
-		
+
 		function getGeoLocation(){
 			GMaps.geolocate({
 				success: function(position) {
 					var coords = position.coords;
 					self.set('lat', coords.latitude);
 					self.set('lng', coords.longitude);
+					self.map.addMarker({
+						lat: self.get('lat'),
+						lng: self.get('lng')
+					});
 				},
 				error: function(error) {
 					alert('Geolocation failed: '+error.message);
@@ -61,7 +65,7 @@ App.IndexController = Ember.Controller.extend({
 			users.emit('login', name);
 		} else {
 			alert('ENTER A NAME!');
-		}	
+		}
 	},
 	submitHandler: function(){
 		msg = this.message;
