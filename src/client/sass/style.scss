@@ -1,0 +1,56 @@
+@import
+	"partials/variables",
+	"partials/normalize",
+	"lib/foundation/includes",
+	"partials/helpers";
+
+.container,
+.top-bar {
+	@extend %row;
+}
+
+.top-bar-wrap {
+	background: $topbar-bg;
+	margin-bottom: emCalc(16px);
+}
+
+.top-bar .active,
+.top-bar .active:hover {
+	color: $primary-color;
+}
+
+.content {
+	@extend %full-width;
+}
+
+// Chat
+.chat {
+	@extend %row;
+}
+
+.chat__room {
+	@include grid-column(8);
+	border-right: 1px solid lightgrey;
+}
+
+.chat__room__log {
+	height: emCalc(500px);
+}
+
+.chat__room__input {
+	@include grid-row();
+
+	input {
+		@include grid-column(10);
+	}
+
+	button {
+		@include grid-column(2);
+		@extend .prefix;
+	}
+}
+
+
+.chat__sidebar {
+	@include grid-column(4);
+}

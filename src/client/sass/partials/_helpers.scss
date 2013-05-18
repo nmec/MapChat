@@ -1,0 +1,126 @@
+// ==========================================================================
+// $ Helper Mixins
+// ==========================================================================
+
+
+
+
+
+
+// ==========================================================================
+// $$ Helper Classes
+// ==========================================================================
+
+
+
+// Image replacement
+%ir {
+	background-color: transparent !important;
+	border: 0;
+	overflow: hidden !important;
+	// IE 6/7 fallback
+	*text-indent: -9999px !important;
+
+	&:before {
+		content: "" !important;
+		display: block !important;
+		width: 0 !important;
+		height: 150% !important;
+	}
+}
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+%hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+%visuallyhidden {
+	border: 0 !important;
+	clip: rect(0 0 0 0) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+}
+
+// Extends the .visuallyhidden class to allow the element to be focusable
+// when navigated to via the keyboard: h5bp.com/p
+%visuallyhidden.focusable {
+	&:active,
+	&:focus {
+		clip: auto !important;
+		height: auto !important;
+		margin: 0 !important;
+		overflow: visible !important;
+		position: static !important;
+		width: auto !important;
+	}
+}
+
+// Hide visually and from screenreaders, but maintain layout
+%invisible {
+	visibility: hidden !important;
+}
+
+// Clearfix: contain floats
+%cf {
+	&:before,
+	&:after {
+		content: " "; /* 1 */
+		display: table; /* 2 */
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	/*
+	 * For IE 6/7 only
+	 * Include this rule to trigger hasLayout and contain floats.
+	 */
+	*zoom: 1;
+}
+
+
+// Extreme IR
+// Hide the text when regular image replacement wont work
+%font-crush {
+	font: 0/0 a;
+	text-shadow: none;
+	color: transparent;
+}
+
+// $$ Grid
+// ==========================================================================
+
+%row {
+	@include grid-row();
+}
+
+%row-nest {
+	@include grid-row( nest );
+}
+
+%full-width {
+	@include grid-column($full-cols);
+}
+
+%half-width {
+	@include grid-column($half-cols);
+}
+
+%quarter-width {
+	@include grid-column($quarter-cols);
+}
+
+%sixth-width {
+	@include grid-column($sixth-cols);
+}
+
+%twelfth-width {
+	@include grid-column($twelfth-cols);
+}

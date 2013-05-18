@@ -1,0 +1,24 @@
+{
+	"name": "Ember-Revisited",
+	"description": "",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"express": "3.x",
+		"async": "0.2.x",
+		"socket.io": "0.9.x"
+	},
+	"devDependencies": {
+		"grunt": "~0.4.0",
+		"grunt-contrib-coffee": "0.6.x",
+		"grunt-contrib-compass": "0.2.x",
+		"grunt-contrib-jade": "0.4.x",
+		"grunt-contrib-uglify": "*",
+		"grunt-contrib-watch": "*",
+		"grunt-contrib-copy": "0.4.x",
+		"grunt-ember-templates": "0.4.x"
+	},
+	"engines": {
+		"node": "0.10.x"
+	}
+}
