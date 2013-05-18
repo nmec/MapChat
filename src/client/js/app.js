@@ -6,17 +6,17 @@ App.IndexController = Ember.Controller.extend({
 		this.toggleProperty('loggedIn');
 	},
 	submitHandler: function(){
-		this.message;
+		msg = this.message;
 	}
 });
 App.IndexRoute = Ember.Route.extend({
-	redirect: function(){ 
-		this.transitionTo('application'); 
+	redirect: function(){
+		this.transitionTo('application');
 	}
 });
 App.FriendsController = Ember.ArrayController.extend({
 	content: [
-	    {name: 'my name'}, 
+		{name: 'my name'},
 		{name: 'my other name'}
 	]
 });
