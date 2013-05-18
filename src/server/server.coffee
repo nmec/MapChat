@@ -1,12 +1,5 @@
-express = require 'express'
-app = express()
-server = require('http').createServer(app)
-io = require('socket.io').listen(server)
 port = 8080
-# app.use express.static __dirname + '/public'
-
-# app.get '/', (req, res) ->
-# 	res.sendfile __dirname + '/public/index.html'
+io = require('socket.io').listen port
 
 numClients = 0
 
@@ -47,5 +40,5 @@ countEmit = (dir) ->
 
 io.set 'log level', 2
 io.set 'transports', ['websocket']
-server.listen port
+
 console.log 'Listening on port ' + port
