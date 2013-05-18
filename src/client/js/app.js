@@ -6,6 +6,7 @@ App.ApplicationRoute = Ember.Route.extend({
 		users.on('allUsers', function(data) {
 			self.controllerFor('friends').set('content', data);
 		});
+
 	}
 });
 App.ApplicationController = Ember.Controller.extend({
@@ -14,6 +15,11 @@ App.ApplicationController = Ember.Controller.extend({
 		
 		getGeoLocation();
 		initMap();
+		
+		users.on('pins', function(data){
+			self.map.removeMarkers();
+			self.map.addMarkers(data);
+		});
 		
 		function initMap(){
 			$(function(){
@@ -35,10 +41,12 @@ App.ApplicationController = Ember.Controller.extend({
 					var coords = position.coords;
 					self.set('lat', coords.latitude);
 					self.set('lng', coords.longitude);
-					self.map.addMarker({
+
+					users.emit('location', {
 						lat: self.get('lat'),
 						lng: self.get('lng')
 					});
+
 				},
 				error: function(error) {
 					alert('Geolocation failed: '+error.message);

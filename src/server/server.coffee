@@ -18,6 +18,7 @@ countEmit = (dir) ->
 	io.sockets.emit 'clients', numClients
 
 loggedInUsers = []
+pins = []
 
 users = io.of '/users'
 
@@ -30,18 +31,13 @@ users.on 'connection', (socket) ->
 		console.log loggedInUsers
 		users.emit 'allUsers', loggedInUsers
 
+	socket.on 'location', (data) ->
+		pins.push data
+		console.log pins
+		users.emit 'pins', pins
+
 
 # chat = io.of '/chat'
-# chatLog = [
-# 	{
-# 		text: 'hello world!'
-# 		time: 'soon'
-# 	},
-# 	{
-# 		text: 'Ember!'
-# 		time: 'now'
-# 	}
-# ]
 
 # chat.on 'connection', (socket) ->
 
