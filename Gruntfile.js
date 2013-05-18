@@ -78,6 +78,12 @@ module.exports = function(grunt) {
 						cwd: 'src/client/js/',
 						src: '**/*.js',
 						dest: 'build/public/js/'
+					},
+					{
+						expand: true,
+						cwd: 'src/client/css/',
+						src: '**/*.css',
+						dest: 'build/public/css/'
 					}
 				]
 			}
@@ -101,8 +107,8 @@ module.exports = function(grunt) {
 				tasks: ['coffee:client']
 			},
 			clientJs: {
-				files: ['src/client/js/**/*.js'],
-				tasks: ['copy:clientJs']
+				files: ['src/client/js/**/*.js', 'src/client/css/**/*.css'],
+				tasks: ['copy:client']
 			},
 			handlebars: {
 				files: ['src/**/*.hbs'],
@@ -122,8 +128,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
 		'jade',
-		'compass',
-		'coffee',
+		//'compass',
+		//'coffee',
 		'ember_templates',
 		'copy'
 	]);
