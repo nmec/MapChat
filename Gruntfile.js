@@ -129,7 +129,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [
 		'jade',
 		//'compass',
-		//'coffee',
+		'coffee',
 		'ember_templates',
 		'copy'
 	]);
